@@ -1,0 +1,8 @@
+# github.com/PremiereGlobal/stim v0.0.5
+github.com/PremiereGlobal/stim/pkg/stimlog
+# github.com/cornelk/hashmap v1.0.0
+github.com/cornelk/hashmap
+# github.com/dchest/siphash v1.1.0
+github.com/dchest/siphash
+# github.com/gorilla/websocket v1.4.0
+github.com/gorilla/websocket
