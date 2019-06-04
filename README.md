@@ -1,23 +1,31 @@
-sip-ping
-========
+#sip-ping
 
-Send a SIP OPTIONS request to a server over ws/wss.
+Send a SIP OPTIONS request to a server over ws/wss or udp/tcp/tls.
 
-example
--------
+##examples
 
-    sip-ping -addr wss://my-server
+WSS:
+```bash
+sip-ping -addr wss://some.sip.server.com:443
+```
 
-install
--------
+UDP:
+```bash
+sip-ping -addr udp://some.sip.server.com:5060
+```
+
+##install
 
 Assuming you have [setup Go](https://golang.org/doc/install):
 
-    go get github.com/watsoncj/sip-ping
+```bash
+go get github.com/lwahlmeier/sip-ping
+```
 
-building
---------
+##building
 
 Uses docker for isolated/repeatable binary builds.
 
-    ./build.sh
+```bash
+./dockerBuild.sh
+```
