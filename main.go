@@ -14,8 +14,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/PremiereGlobal/stim/pkg/stimlog"
 	"github.com/gorilla/websocket"
+	"github.com/lwahlmeier/lcwlog"
 )
 
 const alphanum = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
@@ -23,7 +23,7 @@ const alphanum = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
 var addr = flag.String("addr", "", "http service address")
 var skipVerify = flag.Bool("skipverify", false, "skip TLS certificate verification")
 var debug = flag.Bool("debug", false, "Do debug logging")
-var log stimlog.StimLogger = stimlog.GetLogger()
+var log = lcwlog.GetLogger()
 
 const WS_OPTIONS = `OPTIONS sip:monitor@none SIP/2.0
 Via: SIP/2.0/{{PROTOC}} 81okseq92jb7.invalid;branch=z9hG4bK5964427
@@ -76,13 +76,12 @@ type sipResponse struct {
 func main() {
 	flag.Parse()
 	if *debug {
-		log.SetLevel(stimlog.DebugLevel)
+		lcwlog.GetLoggerConfig().SetLevel(lcwlog.DebugLevel)
 		log.Debug("Debug logging enabled")
 	} else {
-		log.SetLevel(stimlog.InfoLevel)
+		lcwlog.GetLoggerConfig().SetLevel(lcwlog.InfoLevel)
 	}
-
-	log.ForceFlush(true)
+	lcwlog.GetLoggerConfig().ForceFlush(true)
 	interrupt := make(chan os.Signal, 1)
 	log.Debug("Setting up interrupt signal handler")
 	signal.Notify(interrupt, os.Interrupt)

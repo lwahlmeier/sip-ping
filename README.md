@@ -27,5 +27,5 @@ go get github.com/lwahlmeier/sip-ping
 Uses docker for isolated/repeatable binary builds.
 
 ```bash
-./dockerBuild.sh
+make build
 ```

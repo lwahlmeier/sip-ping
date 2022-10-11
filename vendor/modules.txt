@@ -1,8 +1,18 @@
-# github.com/PremiereGlobal/stim v0.0.5
-github.com/PremiereGlobal/stim/pkg/stimlog
-# github.com/cornelk/hashmap v1.0.0
+# github.com/cornelk/hashmap v1.0.1
+## explicit
 github.com/cornelk/hashmap
 # github.com/dchest/siphash v1.1.0
+## explicit
 github.com/dchest/siphash
-# github.com/gorilla/websocket v1.4.0
+# github.com/gorilla/websocket v1.5.0
+## explicit; go 1.12
 github.com/gorilla/websocket
+# github.com/lwahlmeier/lcwlog v0.0.1
+## explicit; go 1.16
+github.com/lwahlmeier/lcwlog
+# github.com/lwahlmeier/pyfmt v0.0.1
+## explicit; go 1.16
+github.com/lwahlmeier/pyfmt
+# github.com/tevino/abool v1.2.0
+## explicit; go 1.14
+github.com/tevino/abool
