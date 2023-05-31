@@ -20,7 +20,7 @@ import (
 
 const alphanum = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
-var addr = flag.String("addr", "", "http service address")
+var addr = flag.String("addr", "", "sip service address")
 var skipVerify = flag.Bool("skipverify", false, "skip TLS certificate verification")
 var debug = flag.Bool("debug", false, "Do debug logging")
 var log = lcwlog.GetLogger()
@@ -87,9 +87,14 @@ func main() {
 	signal.Notify(interrupt, os.Interrupt)
 
 	if len(*addr) == 0 {
-		log.Warn("No addr paramiter found!")
-		flag.Usage()
-		os.Exit(1)
+		args := flag.Args()
+		if len(args) > 0 {
+			*addr = args[0]
+		} else {
+			log.Warn("No addr parameter found!")
+			flag.Usage()
+			os.Exit(1)
+		}
 	}
 
 	var url, err = url.Parse(*addr)
