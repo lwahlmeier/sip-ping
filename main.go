@@ -87,7 +87,7 @@ func main() {
 	signal.Notify(interrupt, os.Interrupt)
 
 	if len(*addr) == 0 {
-		log.Warn("No addr paramiter found!")
+		log.Warn("No addr parameter found!")
 		flag.Usage()
 		os.Exit(1)
 	}
@@ -136,7 +136,7 @@ func querySIP(url *url.URL, skipVerify *bool, request chan string, response chan
 	var err error
 	var conn net.Conn
 	if url.Scheme == "tls" {
-		log.Debug("doing TLS sip")
+		log.Debug("Doing TLS sip")
 		tlsClientConfig := &tls.Config{InsecureSkipVerify: *skipVerify}
 		conn, err = tls.Dial("tcp", url.Host, tlsClientConfig)
 	} else if url.Scheme == "udp" {
@@ -153,7 +153,7 @@ func querySIP(url *url.URL, skipVerify *bool, request chan string, response chan
 	defer conn.Close()
 	log.Debug("Rendering SIP Request")
 	req := renderRequest(TCP_OPTIONS, conn.LocalAddr().String(), url.Scheme)
-	log.Debug("Request Rendered, writting request")
+	log.Debug("Request Rendered, writing request")
 	_, err = conn.Write([]byte(req))
 	if err != nil {
 		response_err <- err
